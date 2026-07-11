@@ -4,6 +4,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use(express.static(__dirname));
 
 app.post("/register", (req, res) => {
   const registration = req.body;
@@ -39,6 +40,6 @@ app.post("/register", (req, res) => {
   });
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("Registration Microservice Running On Port 3000");
 });
